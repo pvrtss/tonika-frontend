@@ -1,0 +1,13 @@
+import { SongCard } from "components/SongCard";
+import React from "react";
+import { useHorizontalScroll } from "utils/useHorizontalScroll";
+import { SongsWrap } from "./SongList.style";
+
+import { SongListProps } from "./SongList.types";
+
+export const SongList: React.FC<SongListProps> = ({songs}) => {
+ const scrollRef = useHorizontalScroll();
+  return <SongsWrap ref={scrollRef}>
+    {songs.map((song, key) => <SongCard song={song} key={key} /> )}
+  </SongsWrap>;
+};
