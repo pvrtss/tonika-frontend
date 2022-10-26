@@ -1,30 +1,32 @@
 import { Header } from "components/Header";
+import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { PageContent } from "components/PageContent";
-import { SongList } from "components/SongList";
 import { ISong } from "components/SongList/SongList.types";
 import React from "react";
-import { Link } from "react-router-dom";
-import { AuthorsButton, ButtonsWrap, NewTextWrap, SongsButton } from "./HomePage.style";
+import { Link, useLocation } from "react-router-dom";
+import { DescWrap, RightDesc, SongContentWrap } from "./SongPage.style";
 
-export const HomePage: React.FC = () => {
+import { SongPageProps } from "./SongPage.types";
+
+export const SongPage: React.FC<SongPageProps> = () => {
   const SongListMock: ISong[] = [
     {
       pk: 1,
       name: "Дождь",
       author: "ДДТ",
-      chords: "(АККОРДЫ)",
+      chords: "(АККОРДЫ 1)",
     },
     {
       pk: 2,
       name: "Smells Like Teen Spirit",
       author: "Nirvana",
-      chords: "(АККОРДЫ)",
+      chords: "(АККОРДЫ 2)",
     },
     {
       pk: 3,
       name: "Seven Nation Army",
       author: "The White Stripes",
-      chords: "(АККОРДЫ)",
+      chords: "(АККОРДЫ 3)",
     },
     {
       pk: 1,
@@ -81,16 +83,35 @@ export const HomePage: React.FC = () => {
       chords: "(АККОРДЫ)",
     },
   ];
+  const path: string = useLocation().pathname;
+  const index = Number(path.substring(path.lastIndexOf("/") + 1));
+  const song = SongListMock[index - 1];
+
   return (
     <>
       <Header />
       <PageContent>
-        <NewTextWrap>Новинки</NewTextWrap>
-        <SongList songs={SongListMock} />
-        <ButtonsWrap>
-          <Link to='/songs'><SongsButton>Все песни</SongsButton></Link>
-          <AuthorsButton>Все авторы</AuthorsButton>
-        </ButtonsWrap>
+        <NewTextWrap>
+          <Link to="/songs">Все песни</Link> /{" "}
+          <Link to={path}>
+            <b>{song.author}</b> - {song.name}
+          </Link>
+        </NewTextWrap>
+        <SongContentWrap>
+          <DescWrap>
+            <img
+              src={require(`../../assets/cover_${song.pk.toString()}.jpg`)}
+              alt="song cover"
+            ></img>
+            <RightDesc>
+              <div>
+                <b>{song.author}</b>
+              </div>
+              <div>{song.name}</div>
+            </RightDesc>
+          </DescWrap>
+          <p>{song.chords}</p>
+        </SongContentWrap>
       </PageContent>
     </>
   );

@@ -5,4 +5,5 @@ export const ContentWrap = styled.div`
     flex-direction: column;
     margin: 0 100px;
     margin-top: 40px;
+    height: 100%;
 `

@@ -1,5 +1,6 @@
 import { TriggerWrapper } from "components/TriggerWrapper";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HeaderWrap, Logo, UserIco, UserIcoWrap } from "./Header.style";
 
@@ -18,7 +19,7 @@ const Popover: React.FC = () => {
 export const Header: React.FC<HeaderProps> = () => {
   return (
     <HeaderWrap>
-      <Logo />
+      <Link to='/home/'><Logo /></Link>
       <UserIcoWrap>
         <TriggerWrapper popover={() => <Popover />} placement={"bottom-end"}>
           <UserIco />
