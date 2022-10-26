@@ -13,10 +13,5 @@ export const SongsWrap = styled.div`
     scrollbar-width: none;
   }
   padding: 16px;
-  & > * {
-        margin-left: 16px;
-    }
-first-child{
-    margin-left: 0px;
-}
+  gap: 16px;
 `;
