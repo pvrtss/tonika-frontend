@@ -7,14 +7,14 @@ export const SongCard: React.FC<SongCardProps> = ({ song }) => {
   return (
     <CardWrap>
       <img
-        src={require(`../../assets/cover_${song.pk.toString()}.jpg`)}
+        src={'http://'+window.location.hostname+':8000'+song.cover}
         alt="song cover"
       ></img>
       <CardTextWrap>
         <div>
-          <b>{song.author}</b>
+          <b>{song.name}</b>
         </div>
-        <div>{song.name}</div>
+        <div>{song.author}</div>
       </CardTextWrap>
     </CardWrap>
   );

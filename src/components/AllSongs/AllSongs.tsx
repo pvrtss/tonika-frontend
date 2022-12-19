@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { RightChild, SongElement, SongsWrap } from "./AllSongs.style";
 
@@ -11,7 +11,7 @@ export const AllSongs: React.FC<AllSongsProps> = ({ songs }) => {
         <Link to={`/song/${song.pk}`}>
           <SongElement key={key}>
             <img
-              src={require(`../../assets/cover_${song.pk.toString()}.jpg`)}
+              src={song.cover}
               alt="song cover"
             ></img>
             <RightChild>

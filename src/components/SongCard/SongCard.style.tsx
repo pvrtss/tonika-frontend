@@ -5,7 +5,6 @@ export const CardWrap = styled.div`
     flex-direction: row;
     border: 1px solid transparent;
     padding: 8px;
-    position: relative;
     height: 100px;
     width: fit-content;
     border-radius: 8px;
@@ -17,6 +16,7 @@ export const CardWrap = styled.div`
     }
     img {
         border-radius: 8px;
+        width: 100px;
     }
 `
 
@@ -24,6 +24,8 @@ export const CardTextWrap = styled.div`
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
+    width: 200px;
+    overflow-x: hidden;
     flex-direction: column;
     justify-content: center;
 `

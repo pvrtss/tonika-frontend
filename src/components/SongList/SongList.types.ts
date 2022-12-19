@@ -1,8 +1,10 @@
 export interface ISong {
     pk: Number,
-    name: String,
-    author: String,
-    chords: String
+    name: string,
+    author: string,
+    chords: string,
+    cover?: string,
+    date_added?: Date,
 }
 
 export type SongListProps = {

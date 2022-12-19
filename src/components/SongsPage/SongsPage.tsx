@@ -1,17 +1,17 @@
+import { SongsContext } from "App";
 import { AllSongs } from "components/AllSongs";
 import { Header } from "components/Header";
 import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { LoadingSpinner } from "components/LoadingSpinner";
 import { PageContent } from "components/PageContent";
-import { ISong } from "components/SongList/SongList.types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { SongsPageProps } from "./SongsPage.types";
 
 export const SongsPage: React.FC<SongsPageProps> = () => {
-  const [songs, setSongs] = useState<ISong[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const songs = useContext(SongsContext)[0];
+  const isLoading = useContext(SongsContext)[1];
   const [query, setQuery] = useState<string>("");
   const filteredSongs = useMemo(() => {
     return songs.filter((song) => {
@@ -21,15 +21,6 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
       );
     });
   }, [query, songs]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/songs/")
-      .then((response) => response.json())
-      .then((data) => {
-        setSongs(data);
-        setIsLoading(false);
-      });
-  }, []);
 
   return (
     <>
