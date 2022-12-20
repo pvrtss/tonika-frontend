@@ -7,7 +7,7 @@ export const SongCard: React.FC<SongCardProps> = ({ song }) => {
   return (
     <CardWrap>
       <img
-        src={'http://'+window.location.hostname+':8000'+song.cover}
+        src={song.cover}
         alt="song cover"
       ></img>
       <CardTextWrap>

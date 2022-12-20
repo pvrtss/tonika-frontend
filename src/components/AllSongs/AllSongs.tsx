@@ -11,8 +11,8 @@ export const AllSongs: React.FC<AllSongsProps> = ({ songs }) => {
         <Link to={`/song/${song.pk}`}>
           <SongElement key={key}>
             <img
-              src={song.cover}
-              alt="song cover"
+              src={song.cover ? new URL(song.cover).pathname : ''}
+              alt="sc"
             ></img>
             <RightChild>
               <b>{song.author}</b> - {song.name}

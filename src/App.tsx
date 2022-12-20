@@ -17,10 +17,11 @@ function App() {
   const dispatch = useDispatch()
   const data = useData()
   const GetSongs = useCallback(() => {
-    fetch("http://127.0.0.1:8000/songs/")
+    fetch("/api/songs/")
       .then((response) => response.json())
       .then((data) => {
-        dispatch(setDataAction(data))
+        console.log(data);
+        dispatch(setDataAction(data));
         setIsLoading(false);
       });
   }, [dispatch]);

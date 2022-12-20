@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
   const [newSongs, setNewSongs] = useState<ISong[]>([]);
   
   const GetNewSongs = useCallback(() => {
-    fetch("http://127.0.0.1:8000/new-songs/")
+    fetch("/api/new-songs/")
       .then((response) => response.json())
       .then((data) => {
         setNewSongs(data);
