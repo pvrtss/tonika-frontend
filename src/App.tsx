@@ -11,6 +11,7 @@ import "./App.css";
 import { setSongs } from "slices/songSlice";
 import { setUser } from "slices/userSlice";
 import { FavouritesPage } from "components/FavouritesPage";
+import { ManagePage } from "components/ManagePage";
 
 export const SongsContext = React.createContext<[ISong[], boolean]>([[], true]);
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<div>LANDING</div>} />
           <Route path="/songs/" element={<SongsPage />}></Route>
           <Route path="/favourites/" element={<FavouritesPage />}></Route>
+          <Route path="/manage/" element={<ManagePage />}></Route>
           <Route path="/authors/"></Route>
           <Route path="/login/" element={<LoginPage />}></Route>
           <Route path="/song/:id" element={<SongPage />}></Route>

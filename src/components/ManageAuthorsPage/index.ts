@@ -1,0 +1,1 @@
+export { ManageAuthorsPage } from './ManageAuthorsPage';

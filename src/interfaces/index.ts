@@ -5,6 +5,9 @@ export interface ISong {
     chords: string,
     cover?: string,
     date_added?: Date,
+    date_accepted?: Date,
+    date_declined?: Date,
+    status: string,
 }
 
 export interface ISongsState {
