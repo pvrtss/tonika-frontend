@@ -29,7 +29,7 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
         <NewTextWrap>
           <Link to="/home">Главная </Link>
           {" / "}
-          <Link to="/songs">Все песни</Link>
+          <Link to="/songs">Все аккорды</Link>
         </NewTextWrap>
         <div>
           <input

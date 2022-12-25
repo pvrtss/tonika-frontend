@@ -16,6 +16,10 @@ export const HeaderWrap = styled.div`
 export const Logo = styled(LogoSVG)`
     height: 38px;
     ellipse {stroke: black;}
+
+    @media (max-width: 330px) {
+        height: 24px;
+    }
 `
 
 export const UserIcoWrap = styled.div`

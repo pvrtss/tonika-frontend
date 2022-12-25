@@ -10,6 +10,12 @@ export const SongContentWrap = styled.div`
     padding: 24px;
 `
 
+export const MainWrap = styled.div`
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 12px;
+`
+
 export const DescWrap = styled.div`
     display: flex;
     margin-bottom: 60px;

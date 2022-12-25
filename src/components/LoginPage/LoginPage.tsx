@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "slices/userSlice";
+import { useAppDispatch } from "utils/hooks";
 import {
   LoginBackground,
   LoginButton,
@@ -20,19 +22,22 @@ export const LoginPage = () => {
   const [login, setLogin] = useState<boolean>(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
   const handleLogin = useCallback(() => {
     fetch("/api/auth/", {
       method: "POST",
       body: JSON.stringify({ username: username, password: password }),
     })
-      .then((res) => res.json())
-      .then((res) => JSON.parse(res))
-      .then((data) =>
-        data.status === "ok"
-          ? navigate("/home")
-          : alert("Неверный логин и/или пароль")
-      );
-  }, [username, password, navigate]);
+      .then((res) => (res.status === 204 ? res : res.json()))
+      .then((res) => {
+        if (res["status"]) {
+          alert("Неверный логин и/или пароль");
+        } else {
+          dispatch(setUser(res));
+          navigate("/home/");
+        }
+      });
+  }, [username, password, navigate, dispatch]);
   const handleRegister = useCallback(() => {
     fetch("/api/user/create/", {
       method: "POST",

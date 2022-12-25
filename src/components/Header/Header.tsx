@@ -1,6 +1,8 @@
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "slices/userSlice";
+import { useAppDispatch, useAppSelector } from "utils/hooks";
 import { HeaderWrap, Logo, UserIco, UserIcoWrap } from "./Header.style";
 
 import { HeaderProps } from "./Header.types";
@@ -11,6 +13,8 @@ function classNames(...classes: string[]) {
 
 export const Header: React.FC<HeaderProps> = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const userState = useAppSelector((state) => state.user);
   return (
     <HeaderWrap>
       <Link to="/home/">
@@ -33,34 +37,56 @@ export const Header: React.FC<HeaderProps> = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <Menu.Item>
-              {({ active }) => (
-                <p
-                  className={classNames(
-                    active ? "bg-gray-100" : "",
-                    "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+          <Menu.Items className="absolute right-5 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            {userState.user ? (
+              <>
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      href="/favourites"
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                      )}
+                    >
+                      Избранное
+                    </a>
                   )}
-                >
-                  Ваш профиль
-                </p>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <p
-                  onClick={() => {fetch("/api/logout/")
-                  //     .then((res) => res.json()) !!! handle global user state
-                      .then(() => navigate('/login'));}}
-                  className={classNames(
-                    active ? "bg-gray-100" : "",
-                    "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <p
+                      onClick={() => {
+                        fetch("/api/logout/").then(() => {
+                          dispatch(logoutUser());
+                          navigate("/login");
+                        });
+                      }}
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-red-700 cursor-pointer"
+                      )}
+                    >
+                      Выход
+                    </p>
                   )}
-                >
-                  Выход
-                </p>
-              )}
-            </Menu.Item>
+                </Menu.Item>
+              </>
+            ) : (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="/login"
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                    )}
+                  >
+                    Войти
+                  </a>
+                )}
+              </Menu.Item>
+            )}
           </Menu.Items>
         </Transition>
       </Menu>

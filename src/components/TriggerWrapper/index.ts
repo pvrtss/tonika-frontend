@@ -1,1 +1,0 @@
-export { TriggerWrapper } from './TriggerWrapper';

@@ -6,9 +6,15 @@ import { SongsWrap } from "./SongList.style";
 
 import { SongListProps } from "./SongList.types";
 
-export const SongList: React.FC<SongListProps> = ({songs}) => {
- const scrollRef = useHorizontalScroll();
-  return <SongsWrap ref={scrollRef}>
-    {songs.map((song, key) => <Link to={`/song/${song.pk}`}><SongCard song={song} key={key} /></Link>)}
-  </SongsWrap>;
+export const SongList: React.FC<SongListProps> = ({ songs }) => {
+  const scrollRef = useHorizontalScroll();
+  return (
+    <SongsWrap ref={scrollRef}>
+      {songs.map((song, key) => (
+        <Link to={`/song/${song.pk}`} key={key}>
+          <SongCard song={song} />
+        </Link>
+      ))}
+    </SongsWrap>
+  );
 };

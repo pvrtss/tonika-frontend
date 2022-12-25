@@ -8,10 +8,10 @@ export const AllSongs: React.FC<AllSongsProps> = ({ songs }) => {
   return (
     <SongsWrap>
       {songs.map((song, key) => (
-        <Link to={`/song/${song.pk}`}>
-          <SongElement key={key}>
+        <Link to={`/song/${song.pk}`} key={key}>
+          <SongElement>
             <img
-              src={song.cover ? new URL(song.cover).pathname : ''}
+              src={song.cover ? new URL(song.cover).pathname : ""}
               alt="sc"
             ></img>
             <RightChild>

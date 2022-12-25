@@ -1,21 +1,23 @@
 import { Header } from "components/Header";
+import { HomePanel } from "components/HomePanel";
 import { PageContent } from "components/PageContent";
 import { SongList } from "components/SongList";
-import { ISong } from "components/SongList/SongList.types";
+import { MainWrap } from "components/SongPage/SongPage.style";
+import { ISong } from "interfaces";
 import React, { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthorsButton, ButtonsWrap, NewTextWrap, SongsButton } from "./HomePage.style";
+import { useAppSelector } from "utils/hooks";
+import { NewTextWrap } from "./HomePage.style";
 
 export const HomePage: React.FC = () => {
   const [newSongs, setNewSongs] = useState<ISong[]>([]);
-  
+  const userState = useAppSelector((state) => state.user);
   const GetNewSongs = useCallback(() => {
     fetch("/api/new-songs/")
       .then((response) => response.json())
       .then((data) => {
         setNewSongs(data);
       });
-  }, [])
+  }, []);
 
   useEffect(() => {
     GetNewSongs();
@@ -25,12 +27,13 @@ export const HomePage: React.FC = () => {
     <>
       <Header />
       <PageContent>
-        <NewTextWrap>Новинки</NewTextWrap>
+        <NewTextWrap>Главная</NewTextWrap>
+        <MainWrap>Новинки</MainWrap>
         <SongList songs={newSongs} />
-        <ButtonsWrap>
-          <Link to='/songs'><SongsButton>Все песни</SongsButton></Link>
-          <AuthorsButton>Все авторы</AuthorsButton>
-        </ButtonsWrap>
+        <HomePanel
+          manager={userState.user?.is_staff}
+          user={userState.user ? true : false}
+        />
       </PageContent>
     </>
   );

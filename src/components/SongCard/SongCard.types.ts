@@ -1,4 +1,4 @@
-import { ISong } from "components/SongList/SongList.types";
+import { ISong } from "interfaces";
 
 export type SongCardProps = {
     song: ISong
