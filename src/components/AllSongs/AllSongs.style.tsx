@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const SongsWrap = styled.div`
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-gap: 1rem;
+  a {
+    width: 100%;
+  }
 `;
 
 export const SongElement = styled.div`

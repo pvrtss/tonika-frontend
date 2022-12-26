@@ -30,4 +30,7 @@ export const CardTextWrap = styled.div`
   justify-content: center;
   width: 200px;
   height: 48px;
+  @media (max-width: 426px){
+    width: 150px;
+  }
 `;

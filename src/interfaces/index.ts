@@ -25,3 +25,9 @@ export interface IUser {
 export interface IUserState {
     user: IUser | undefined,
 }
+
+export interface IAuthor {
+    pk: string,
+    name: string,
+    description: string,
+}

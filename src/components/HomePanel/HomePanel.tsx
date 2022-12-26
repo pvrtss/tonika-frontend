@@ -24,10 +24,12 @@ export const HomePanel: React.FC<HomePanelProps> = ({ manager, user }) => {
           <Key></Key>
         </ChordsButton>
       </Link>
-      <AuthorsButton>
-        <PanelButtonText>Авторы</PanelButtonText>
-        <Singer></Singer>
-      </AuthorsButton>
+      <Link to="/authors">
+        <AuthorsButton>
+          <PanelButtonText>Авторы</PanelButtonText>
+          <Singer></Singer>
+        </AuthorsButton>
+      </Link>
       {user && (
         <FoldersButton>
           <PanelButtonText>Коллекция</PanelButtonText>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUser, IUserState } from "interfaces";
+import { ISong, IUser, IUserState } from "interfaces";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
@@ -19,10 +19,13 @@ const userSlice = createSlice({
     logoutUser(state) {
       state.user = undefined;
     },
+    setFavourites(state, action: PayloadAction<ISong[]>) {
+      if (state.user) state.user.favourites = action.payload;
+    },
   },
 });
 
 export const selectUser = (state: RootState) => state.user;
-export const { setUser, logoutUser } = userSlice.actions;
+export const { setUser, logoutUser, setFavourites } = userSlice.actions;
 
 export default userSlice.reducer;

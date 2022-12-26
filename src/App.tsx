@@ -12,6 +12,11 @@ import { setSongs } from "slices/songSlice";
 import { setUser } from "slices/userSlice";
 import { FavouritesPage } from "components/FavouritesPage";
 import { ManagePage } from "components/ManagePage";
+import { CreateAuthorPage } from "components/CreateAuthorPage";
+import { AuthorsPage } from "components/AuthorsPage";
+import { CreateSongPage } from "components/CreateSongPage";
+import { ManageSongsPage } from "components/ManageSongsPage";
+import { setAllSongs } from "slices/allSongsSlice";
 
 export const SongsContext = React.createContext<[ISong[], boolean]>([[], true]);
 
@@ -19,6 +24,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const songsState = useAppSelector((state) => state.songs);
+  const userState = useAppSelector((state) => state.user);
   const GetSongs = useCallback(() => {
     fetch("/api/songs/")
       .then((response) => response.json())
@@ -34,12 +40,21 @@ function App() {
       .then((data) => {
         console.log(data);
         dispatch(setUser(data));
+      })
+      .then(() => {
+        fetch("/api/all-songs/")
+          .then((response) => response.json())
+          .then((data) => {
+            dispatch(setAllSongs(data));
+            console.log(data);
+          });
       });
-  }, [dispatch]);
+  }, [dispatch, userState.user]);
+
   useEffect(() => {
     GetUser();
     GetSongs();
-  }, [dispatch, GetSongs, GetUser]);
+  }, []);
 
   return (
     <SongsContext.Provider value={[songsState.songs, isLoading]}>
@@ -48,9 +63,12 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<div>LANDING</div>} />
           <Route path="/songs/" element={<SongsPage />}></Route>
+          <Route path="/songs/create" element={<CreateSongPage />}></Route>
+          <Route path="/manage/songs/" element={<ManageSongsPage />}></Route>
           <Route path="/favourites/" element={<FavouritesPage />}></Route>
           <Route path="/manage/" element={<ManagePage />}></Route>
-          <Route path="/authors/"></Route>
+          <Route path="/authors/" element={<AuthorsPage />}></Route>
+          <Route path="/authors/create" element={<CreateAuthorPage />}></Route>
           <Route path="/login/" element={<LoginPage />}></Route>
           <Route path="/song/:id" element={<SongPage />}></Route>
         </Routes>

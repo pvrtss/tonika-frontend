@@ -2,8 +2,10 @@ import { CardTextWrap } from "components/SongCard/SongCard.style";
 import { StatusLabel } from "components/StatusLabel";
 import { ISong } from "interfaces";
 import React, { useCallback, useState } from "react";
+import { useAppDispatch, useAppSelector } from "utils/hooks";
 import {
   AcceptButtonWrap,
+  AddButtonWrap,
   DeclineButtonWrap,
   DeleteButtonWrap,
   LeftChild,
@@ -11,20 +13,26 @@ import {
   SongStrictCardWrap,
   StarF,
   StarO,
+  StyledAdd,
   StyledCheck,
   StyledClose,
   StyledTrash,
 } from "./SongStrictCard.style";
 
 import { SongStrictCardProps } from "./SongStrictCard.types";
+import { setFavourites } from "slices/userSlice";
+import { setAllSongs } from "slices/allSongsSlice";
 
 const calcDefault = (favs: ISong[], song: ISong) => {
+  console.log(!!favs.filter((s) => s.pk === song.pk).length);
+
   return !!favs.filter((s) => s.pk === song.pk).length;
 };
 
 export const SongStrictCard: React.FC<SongStrictCardProps> = ({
   song,
   favorites,
+  stars,
   prestars,
   manage,
   folders,
@@ -32,25 +40,41 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
   onAccept,
   onDecline,
   onDelete,
+  folderPk,
+  fromViewset,
 }) => {
+  const userState = useAppSelector((state) => state.user);
   const [isFavourite, setIsFavourite] = useState(
-    prestars ? prestars : calcDefault(favorites ? favorites : [], song)
+    prestars
+      ? prestars
+      : userState.user
+      ? calcDefault(favorites ? favorites : [], song)
+      : false
   );
-  const handleClick = () => {
+  const dispatch = useAppDispatch();
+  const handleFavourite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!isFavourite) {
       fetch("/api/favourites/add/", {
         method: "POST",
         body: JSON.stringify({ song_pk: song.pk }),
       })
         .then((r) => r.json())
-        .then((d) => console.log(d));
+        .then((d) => {
+          dispatch(setFavourites(d));
+          console.log(d);
+        });
     } else {
       fetch("/api/favourites/delete/", {
         method: "DELETE",
         body: JSON.stringify({ song_pk: song.pk }),
       })
         .then((r) => r.json())
-        .then((d) => console.log(d));
+        .then((d) => {
+          dispatch(setFavourites(d));
+          console.log(d);
+        });
     }
     setIsFavourite((ps) => !ps);
   };
@@ -62,8 +86,16 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
       if (onAccept) {
         onAccept(e);
       }
+      fetch("/api/songs/accept", {
+        method: "POST",
+        body: JSON.stringify({ song_pk: song.pk }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(setAllSongs(res));
+        });
     },
-    [onAccept]
+    [onAccept, song, dispatch]
   );
 
   const handleDecline = useCallback(
@@ -73,8 +105,16 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
       if (onDecline) {
         onDecline(e);
       }
+      fetch("/api/songs/decline", {
+        method: "POST",
+        body: JSON.stringify({ song_pk: song.pk }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          dispatch(setAllSongs(res));
+        });
     },
-    [onDecline]
+    [onDecline, song, dispatch]
   );
 
   const handleDelete = useCallback(
@@ -87,11 +127,19 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
     },
     [onDelete]
   );
-
   return (
     <SongStrictCardWrap>
       <LeftChild>
-        <img src={song.cover} alt="song cover"></img>
+        <img
+          src={
+            song.cover
+              ? fromViewset
+                ? new URL(song.cover).pathname
+                : song.cover
+              : ""
+          }
+          alt="song cover"
+        ></img>
         <CardTextWrap>
           <div>
             <b>{song.name}</b>
@@ -100,33 +148,41 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
         </CardTextWrap>
       </LeftChild>
       <RightChild className="right">
-        {manage ? (
-          <>
-            {song.status === "PE" ? (
-              <>
-                <AcceptButtonWrap onClick={handleAccept}>
-                  <StyledCheck />
-                </AcceptButtonWrap>
-                <DeclineButtonWrap onClick={handleDecline}>
-                  <StyledClose />
-                </DeclineButtonWrap>
-              </>
-            ) : (
-              <></>
-            )}
-            <StatusLabel status={"PE"} />
-          </>
-        ) : folders ? (
-          <DeleteButtonWrap onClick={handleDelete}>
-            <StyledTrash />
-          </DeleteButtonWrap>
-        ) : folder ? (
-          <></>
-        ) : isFavourite ? (
-          <StarF onClick={handleClick} />
-        ) : (
-          <StarO onClick={handleClick} />
-        )}
+        {userState.user &&
+          (manage ? (
+            <>
+              {song.status === "PE" ? (
+                <>
+                  <AcceptButtonWrap onClick={handleAccept}>
+                    <StyledCheck />
+                  </AcceptButtonWrap>
+                  <DeclineButtonWrap onClick={handleDecline}>
+                    <StyledClose />
+                  </DeclineButtonWrap>
+                </>
+              ) : (
+                <></>
+              )}
+              <StatusLabel status={song.status} />
+            </>
+          ) : folders ? (
+            <DeleteButtonWrap onClick={handleDelete}>
+              <StyledTrash />
+            </DeleteButtonWrap>
+          ) : folder ? (
+            <AddButtonWrap>
+              <StyledAdd />
+            </AddButtonWrap>
+          ) : (
+            <></>
+          ))}
+        {userState.user &&
+          stars &&
+          (isFavourite ? (
+            <StarF onClick={handleFavourite} />
+          ) : (
+            <StarO onClick={handleFavourite} />
+          ))}
       </RightChild>
     </SongStrictCardWrap>
   );

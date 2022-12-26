@@ -4,6 +4,7 @@ import { ReactComponent as StarOSVG } from "../../assets/staro.svg";
 import { ReactComponent as CheckSVG } from "assets/check.svg";
 import { ReactComponent as CloseSVG } from "assets/close.svg";
 import { ReactComponent as TrashSVG } from "assets/trash.svg";
+import { ReactComponent as AddSVG } from "assets/add-folder.svg";
 
 export const SongStrictCardWrap = styled.div`
   margin-top: 16px;
@@ -21,13 +22,6 @@ export const SongStrictCardWrap = styled.div`
     border: 1px solid #649fff;
     box-shadow: 0px 0px 15px 5px rgba(34, 141, 223, 0.2);
   }
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    .right {
-      margin-top: 12px;
-    }
-    justify-content: flex-start;
-  }
 `;
 
 export const LeftChild = styled.div`
@@ -41,11 +35,13 @@ export const LeftChild = styled.div`
 export const StarF = styled(StarFSVG)`
   width: 20px;
   fill: #e7a310;
+  cursor: pointer;
 `;
 
 export const StarO = styled(StarOSVG)`
   width: 20px;
   fill: #999999;
+  cursor: pointer;
 `;
 
 export const StyledClose = styled(CloseSVG)`
@@ -61,10 +57,31 @@ export const StyledCheck = styled(CheckSVG)`
 `;
 
 export const StyledTrash = styled(TrashSVG)`
-  fill: rgb(119, 27, 27);
+  fill: #999999;
   height: 20px;
   width: 20px;
-`
+`;
+
+export const StyledAdd = styled(AddSVG)`
+  fill: #999999;
+  height: 20px;
+  width: 20px;
+`;
+
+export const AddButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 3px;
+  :hover {
+    svg {
+      fill: rgb(19, 19, 19);
+    }
+    background: #d3d3d3;
+  }
+  cursor: pointer;
+`;
 
 export const DeclineButtonWrap = styled.div`
   display: flex;
@@ -76,6 +93,7 @@ export const DeclineButtonWrap = styled.div`
   :hover {
     background: #e6a9a9;
   }
+  cursor: pointer;
 `;
 
 export const DeleteButtonWrap = styled.div`
@@ -85,8 +103,12 @@ export const DeleteButtonWrap = styled.div`
   padding: 4px;
   border-radius: 3px;
   :hover {
+    svg {
+      fill: rgb(119, 27, 27);
+    }
     background: #ffcbcb;
   }
+  cursor: pointer;
 `;
 
 export const AcceptButtonWrap = styled.div`
@@ -99,6 +121,7 @@ export const AcceptButtonWrap = styled.div`
   :hover {
     background: #a3ca93;
   }
+  cursor: pointer;
 `;
 
 export const RightChild = styled.div`

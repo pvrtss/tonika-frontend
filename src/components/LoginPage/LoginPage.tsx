@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setUser } from "slices/userSlice";
 import { useAppDispatch } from "utils/hooks";
 import {
@@ -53,7 +53,9 @@ export const LoginPage = () => {
 
   return (
     <LoginBackground>
-      <Logo></Logo>
+      <Link to="/home">
+        <Logo></Logo>
+      </Link>
       <LoginCard>
         <LoginText>{login ? "Вход" : "Регистрация"}</LoginText>
         <LoginInput

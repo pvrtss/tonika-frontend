@@ -42,15 +42,15 @@ export const Header: React.FC<HeaderProps> = () => {
               <>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
-                      href="/favourites"
+                    <Link
+                      to="/favourites"
                       className={classNames(
                         active ? "bg-gray-100" : "",
                         "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                       )}
                     >
                       Избранное
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>

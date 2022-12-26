@@ -6,6 +6,7 @@ import { LoadingSpinner } from "components/LoadingSpinner";
 import { PageContent } from "components/PageContent";
 import React, { useContext, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Input } from "./SongsPage.style";
 
 import { SongsPageProps } from "./SongsPage.types";
 
@@ -32,11 +33,12 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
           <Link to="/songs">Все аккорды</Link>
         </NewTextWrap>
         <div>
-          <input
+          <Input
+            top="20px"
             placeholder="Поиск"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-          ></input>
+          ></Input>
         </div>
         {isLoading ? <LoadingSpinner /> : <AllSongs songs={filteredSongs} />}
       </PageContent>
