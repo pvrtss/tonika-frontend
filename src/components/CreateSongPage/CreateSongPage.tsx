@@ -1,4 +1,7 @@
-import { CreateButton, Form } from "components/CreateAuthorPage/CreateAuthorPage.style";
+import {
+  CreateButton,
+  Form,
+} from "components/CreateAuthorPage/CreateAuthorPage.style";
 import { Header } from "components/Header";
 import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { PageContent } from "components/PageContent";
@@ -19,10 +22,13 @@ export const CreateSongPage: React.FC<CreateSongPageProps> = () => {
     data.append("name", name);
     data.append("author", author);
     data.append("chords", chords);
-    data.append("cover", cover);
+    console.log(cover);
+    data.append("cover", cover ? cover : "");
     fetch("/api/songs/", {
       method: "POST",
       body: data,
+    }).then((res) => {
+      if (res.status === 201) alert("created");
     });
   }, [name, author, chords]);
   return (

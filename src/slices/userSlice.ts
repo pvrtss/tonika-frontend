@@ -9,9 +9,7 @@ const initialState: IUserState = {
 
 const userSlice = createSlice({
   name: "userState",
-  // в initialState мы указываем начальное состояние нашего глобального хранилища
   initialState,
-  // Редьюсеры в слайсах мутируют состояние и ничего не возвращают наружу
   reducers: {
     setUser(state, action: PayloadAction<IUser>) {
       state.user = action.payload;

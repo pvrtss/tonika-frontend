@@ -140,12 +140,12 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
           }
           alt="song cover"
         ></img>
-        <CardTextWrap>
+        <div style={{marginLeft: "20px"}}>
           <div>
             <b>{song.name}</b>
           </div>
           <div>{song.author}</div>
-        </CardTextWrap>
+        </div>
       </LeftChild>
       <RightChild className="right">
         {userState.user &&

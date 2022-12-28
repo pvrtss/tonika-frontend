@@ -6,15 +6,12 @@ import { SongCardProps } from "./SongCard.types";
 export const SongCard: React.FC<SongCardProps> = ({ song }) => {
   return (
     <CardWrap>
-      <img
-        src={song.cover}
-        alt="song cover"
-      ></img>
+      <img src={song.cover} alt="song cover"></img>
       <CardTextWrap>
-        <div>
+        <span style={{ whiteSpace: "nowrap" }}>
           <b>{song.name}</b>
-        </div>
-        <div>{song.author}</div>
+        </span>
+        <span style={{ whiteSpace: "nowrap" }}>{song.author}</span>
       </CardTextWrap>
     </CardWrap>
   );

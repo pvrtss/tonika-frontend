@@ -1,3 +1,4 @@
+import { CreateButton } from "components/CreateAuthorPage/CreateAuthorPage.style";
 import { Header } from "components/Header";
 import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { LoadingSpinner } from "components/LoadingSpinner";
@@ -20,7 +21,10 @@ import {
 
 import { AuthorsPageProps } from "./AuthorsPage.types";
 
-export const AuthorsPage: React.FC<AuthorsPageProps> = ({ manage, onDelete }) => {
+export const AuthorsPage: React.FC<AuthorsPageProps> = ({
+  manage,
+  onDelete,
+}) => {
   const [authors, setAuthors] = useState<IAuthor[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -41,7 +45,7 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({ manage, onDelete }) =>
     e.preventDefault();
     e.stopPropagation();
     if (onDelete) onDelete(e);
-  }
+  };
 
   return (
     <>
@@ -58,6 +62,11 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({ manage, onDelete }) =>
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         ></Input>
+        <Link to={"/authors/create"}>
+          <CreateButton style={{ maxWidth: "500px" }}>
+            Добавить автора
+          </CreateButton>
+        </Link>
         {isLoading ? (
           <LoadingSpinner />
         ) : filteredAuthors.length ? (

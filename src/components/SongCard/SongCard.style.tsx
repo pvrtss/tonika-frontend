@@ -18,6 +18,7 @@ export const CardWrap = styled.div`
   img {
     border-radius: 8px;
     width: 84px;
+    height:84px;
   }
 `;
 

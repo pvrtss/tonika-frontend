@@ -9,9 +9,7 @@ const initialState: ISongsState = {
 
 const allSongsSlice = createSlice({
   name: "allSongsState",
-  // в initialState мы указываем начальное состояние нашего глобального хранилища
   initialState,
-  // Редьюсеры в слайсах мутируют состояние и ничего не возвращают наружу
   reducers: {
     setAllSongs(state, action: PayloadAction<ISong[]>) {
       state.songs = action.payload;

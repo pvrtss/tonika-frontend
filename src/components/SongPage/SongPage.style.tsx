@@ -29,3 +29,12 @@ export const RightDesc = styled.div`
     flex-direction: column;
     justify-content: center;
 `
+
+export const TextArea = styled.textarea`
+    background: #9999;
+    font-size: inherit;
+    font-family: inherit;
+    resize: none;
+    border-radius: 8px;
+    padding: 4px;
+`

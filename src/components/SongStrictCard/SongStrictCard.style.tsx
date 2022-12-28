@@ -29,6 +29,7 @@ export const LeftChild = styled.div`
   img {
     border-radius: 8px;
     width: 50px;
+    height: 50px;
   }
 `;
 

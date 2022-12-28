@@ -49,7 +49,7 @@ function App() {
             console.log(data);
           });
       });
-  }, [dispatch, userState.user]);
+  }, [dispatch]);
 
   useEffect(() => {
     GetUser();
@@ -70,7 +70,7 @@ function App() {
           <Route path="/authors/" element={<AuthorsPage />}></Route>
           <Route path="/authors/create" element={<CreateAuthorPage />}></Route>
           <Route path="/login/" element={<LoginPage />}></Route>
-          <Route path="/song/:id" element={<SongPage />}></Route>
+          <Route path="/songs/:id" element={<SongPage />}></Route>
         </Routes>
       </Router>
     </SongsContext.Provider>

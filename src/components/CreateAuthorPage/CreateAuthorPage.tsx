@@ -18,6 +18,8 @@ export const CreateAuthorPage: React.FC<CreateAuthorPageProps> = () => {
     fetch("/api/authors/", {
       method: "POST",
       body: data,
+    }).then((res) => {
+      if (res.status === 201) alert("created");
     });
   }, [name, desc]);
   return (
