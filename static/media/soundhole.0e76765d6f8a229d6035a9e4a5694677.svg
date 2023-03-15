@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <ellipse style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 7px;" cx="250" cy="250" rx="86.124" ry="86.124"/>
+  <ellipse style="stroke: rgb(0, 0, 0);" cx="250" cy="250" rx="74.163" ry="74.163"/>
+  <rect x="150" y="258" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+  <rect x="150" y="242" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+  <rect x="150" y="290" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+  <rect x="150" y="274" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+  <rect x="150" y="226" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+  <rect x="150" y="210" width="200" height="5" style="stroke-width: 0px; fill: rgb(127, 123, 123);"/>
+</svg>
