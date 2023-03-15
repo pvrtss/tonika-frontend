@@ -1,18 +1,22 @@
-# Getting Started with Create React App
+# Тоника (Фронтенд)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Это репозиторий для фронтенда сайта с подборами аккордов "Тоника". Репозиторий бэкенда - [тут](https://github.com/pvrtss/tonika-backend)
 
-## Available Scripts
+## Опробовать
 
-In the project directory, you can run:
+> Некоторые функции, в силу замены бэкенда на заглушки, могут не работать или работать некорректно.
 
-### `npm start`
+Посмотреть реализацию можно нажав по [ссылке](https://pvrtss.github.io/tonika-frontend/home).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Использованные технологии
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Проект написан на TypeScript с использованием фреймоврка React, также был использован менеджер состояний Redux. Для стилизации были выбраны styled-components и tailwindcss для нескольких компонентов из библиотеки [MUI](https://mui.com/).
+
+## Адаптивность
+
+Для проекта стояла задача наличия мобильного приложения. Для сокращения времени на разработку и удобства пользователя была применена технология PWA и вся верстка сайта изначально делалась для полной адаптивности.
+
+![](/src/assets/)
 
 ### `npm test`
 
