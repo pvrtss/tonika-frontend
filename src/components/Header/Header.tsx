@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const userState = useAppSelector((state) => state.user);
   return (
     <HeaderWrap>
-      <Link to="/home/">
+      <Link to="/home">
         <Logo />
       </Link>
       <Menu as="div">

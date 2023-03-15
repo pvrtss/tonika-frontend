@@ -11,7 +11,7 @@ import {
 } from "components/SongStrictCard/SongStrictCard.style";
 import { StatusLabel } from "components/StatusLabel";
 import { ISong } from "interfaces";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setSongs } from "slices/songSlice";
 import { useAppDispatch, useAppSelector } from "utils/hooks";
@@ -42,15 +42,16 @@ export const SongPage: React.FC<SongPageProps> = () => {
   const cachedSong = useContext(SongsContext)[0].find(
     (song) => song.pk === index
   );
-  useEffect(() => {
-    fetch(`/api/songs/${song.pk}/`)
-      .then((r) => r.json())
-      .then((r) => {
-        setAuthor(r.author);
-        setName(r.name);
-        setChords(r.chords);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`/api/songs/${song.pk}/`)
+  //     .then((r) => r.json())
+  //     .then((r) => {
+  //       setAuthor(r.author);
+  //       setName(r.name);
+  //       setChords(r.chords);
+  //     });
+  // }, []);
+
   const song: ISong = cachedSong ? cachedSong : defaultSong;
   const [name, setName] = useState(
     useContext(SongsContext)[0].find((song) => song.pk === index)?.name
@@ -61,7 +62,7 @@ export const SongPage: React.FC<SongPageProps> = () => {
   const [chords, setChords] = useState(
     useContext(SongsContext)[0].find((song) => song.pk === index)?.name
   );
-  const cover = song.cover ? new URL(song.cover).pathname : "/";
+  const cover = song.cover;
   const handleChange = async () => {
     if (change) {
       const data = new FormData();

@@ -21,12 +21,15 @@ export const ManagePanel: React.FC<ManagePanelProps> = () => {
             <Key></Key>
           </ChordsButton>
         </Link>
-        <Link to="/manage/authors">
-          <AuthorsButton>
-            <PanelButtonText>Авторы</PanelButtonText>
-            <Singer></Singer>
-          </AuthorsButton>
-        </Link>
+
+        <AuthorsButton
+          onClick={() => {
+            alert("TODO");
+          }}
+        >
+          <PanelButtonText>Авторы</PanelButtonText>
+          <Singer></Singer>
+        </AuthorsButton>
       </PanelWrap>
     </>
   );

@@ -1,3 +1,4 @@
+import { userMock } from "mocks";
 import React, { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from "slices/userSlice";
@@ -20,35 +21,13 @@ const BottomInputStyle = {
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState<boolean>(true);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useAppDispatch();
   const handleLogin = useCallback(() => {
-    fetch("/api/auth/", {
-      method: "POST",
-      body: JSON.stringify({ username: username, password: password }),
-    })
-      .then((res) => (res.status === 204 ? res : res.json()))
-      .then((res) => {
-        if (res["status"]) {
-          alert("Неверный логин и/или пароль");
-        } else {
-          dispatch(setUser(res));
-          navigate("/home/");
-        }
-      });
-  }, [username, password, navigate, dispatch]);
-  const handleRegister = useCallback(() => {
-    fetch("/api/user/create/", {
-      method: "POST",
-      body: JSON.stringify({ username: username, password: password }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, [username, password]);
-
+    dispatch(setUser(userMock));
+    navigate("/home/");
+  }, [dispatch, navigate]);
   const handleKeypress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") login ? handleLogin() : handleRegister();
+    if (e.key === "Enter") handleLogin();
   };
 
   return (
@@ -60,7 +39,6 @@ export const LoginPage = () => {
         <LoginText>{login ? "Вход" : "Регистрация"}</LoginText>
         <LoginInput
           placeholder="Логин"
-          onChange={(e) => setUsername(e.target.value)}
           onKeyDownCapture={handleKeypress}
           className="px-4"
         ></LoginInput>
@@ -68,11 +46,10 @@ export const LoginPage = () => {
           placeholder="Пароль"
           type="password"
           style={BottomInputStyle}
-          onChange={(e) => setPassword(e.target.value)}
           onKeyDownCapture={handleKeypress}
           className="px-4"
         ></LoginInput>
-        <LoginButton onClick={login ? handleLogin : handleRegister}>
+        <LoginButton onClick={handleLogin}>
           {login ? "Войти" : "Зарегистрироваться"}
         </LoginButton>
         <LoginFootText>

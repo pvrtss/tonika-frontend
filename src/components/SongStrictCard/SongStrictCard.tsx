@@ -1,4 +1,3 @@
-import { CardTextWrap } from "components/SongCard/SongCard.style";
 import { StatusLabel } from "components/StatusLabel";
 import { ISong } from "interfaces";
 import React, { useCallback, useState } from "react";
@@ -130,17 +129,8 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
   return (
     <SongStrictCardWrap>
       <LeftChild>
-        <img
-          src={
-            song.cover
-              ? fromViewset
-                ? new URL(song.cover).pathname
-                : song.cover
-              : ""
-          }
-          alt="song cover"
-        ></img>
-        <div style={{marginLeft: "20px"}}>
+        <img src={song.cover} alt="song cover"></img>
+        <div style={{ marginLeft: "20px" }}>
           <div>
             <b>{song.name}</b>
           </div>

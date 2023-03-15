@@ -5,9 +5,9 @@ import { Header } from "components/Header";
 import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { LoadingSpinner } from "components/LoadingSpinner";
 import { PageContent } from "components/PageContent";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Input, MPWrap } from "./SongsPage.style";
+import { Input } from "./SongsPage.style";
 
 import { SongsPageProps } from "./SongsPage.types";
 
@@ -24,6 +24,10 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
       );
     });
   }, [query, songs]);
+
+  useEffect(() => {
+    console.log(songs);
+  }, [songs]);
 
   return (
     <>

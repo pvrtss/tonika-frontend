@@ -1,9 +1,5 @@
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-import {
-  DatePicker,
-  DateTimePicker,
-  LocalizationProvider,
-} from "@mui/x-date-pickers";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { Header } from "components/Header";
 import { NewTextWrap } from "components/HomePage/HomePage.style";
 import { PageContent } from "components/PageContent";
@@ -21,7 +17,6 @@ import { TextField } from "@mui/material";
 import { PickerWrapper } from "./ManageSongsPage.style";
 import { CreateButton } from "components/CreateAuthorPage/CreateAuthorPage.style";
 import { Popup } from "components/Popup";
-import { set } from "immer/dist/internal";
 
 export const ManageSongsPage: React.FC<ManageSongsPageProps> = () => {
   const dispatch = useDispatch();

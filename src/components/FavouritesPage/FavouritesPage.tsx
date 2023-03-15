@@ -5,9 +5,9 @@ import { PageContent } from "components/PageContent";
 import { Input } from "components/SongsPage/SongsPage.style";
 import { SongStrictCard } from "components/SongStrictCard";
 import { ISong } from "interfaces";
+import { favouritesMock } from "mocks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-// import { useAppSelector } from "utils/hooks";
 
 export const FavouritesPage = () => {
   // const favourites: ISong[] = useAppSelector((state) =>
@@ -15,14 +15,9 @@ export const FavouritesPage = () => {
   // );
 
   const [favourites, setFavourites] = useState<ISong[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const isLoading = false;
   useEffect(() => {
-    fetch("/api/favourites/")
-      .then((response) => response.json())
-      .then((data) => {
-        setFavourites(data);
-        setIsLoading(false);
-      });
+    setFavourites(favouritesMock);
   }, []);
   const [query, setQuery] = useState<string>("");
   const filteredSongs = useMemo(() => {

@@ -3,12 +3,11 @@ import { LoginPage } from "components/LoginPage";
 import { ISong } from "interfaces";
 import { SongPage } from "components/SongPage";
 import { SongsPage } from "components/SongsPage";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "utils/hooks";
+import { useAppDispatch } from "utils/hooks";
 
 import "./App.css";
-import { setSongs } from "slices/songSlice";
 import { setUser } from "slices/userSlice";
 import { FavouritesPage } from "components/FavouritesPage";
 import { ManagePage } from "components/ManagePage";
@@ -16,48 +15,24 @@ import { CreateAuthorPage } from "components/CreateAuthorPage";
 import { AuthorsPage } from "components/AuthorsPage";
 import { CreateSongPage } from "components/CreateSongPage";
 import { ManageSongsPage } from "components/ManageSongsPage";
+import { allSongs, userMock } from "mocks";
 import { setAllSongs } from "slices/allSongsSlice";
 
-export const SongsContext = React.createContext<[ISong[], boolean]>([[], true]);
+export const SongsContext = React.createContext<[ISong[], boolean]>([
+  allSongs,
+  true,
+]);
 
 function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const isLoading: boolean = false;
   const dispatch = useAppDispatch();
-  const songsState = useAppSelector((state) => state.songs);
-  const userState = useAppSelector((state) => state.user);
-  const GetSongs = useCallback(() => {
-    fetch("/api/songs/")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        dispatch(setSongs(data));
-        setIsLoading(false);
-      });
-  }, [dispatch]);
-  const GetUser = useCallback(() => {
-    fetch("/api/eauth/")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        dispatch(setUser(data));
-      })
-      .then(() => {
-        fetch("/api/all-songs/")
-          .then((response) => response.json())
-          .then((data) => {
-            dispatch(setAllSongs(data));
-            console.log(data);
-          });
-      });
-  }, [dispatch]);
-
   useEffect(() => {
-    GetUser();
-    GetSongs();
-  }, []);
+    dispatch(setUser(userMock));
+    dispatch(setAllSongs(allSongs));
+  }, [dispatch]);
 
   return (
-    <SongsContext.Provider value={[songsState.songs, isLoading]}>
+    <SongsContext.Provider value={[allSongs, isLoading]}>
       <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />

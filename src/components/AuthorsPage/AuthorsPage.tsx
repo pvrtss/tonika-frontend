@@ -9,6 +9,7 @@ import {
   StyledTrash,
 } from "components/SongStrictCard/SongStrictCard.style";
 import { IAuthor } from "interfaces";
+import { allAuthors } from "mocks";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -26,14 +27,9 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
   onDelete,
 }) => {
   const [authors, setAuthors] = useState<IAuthor[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const isLoading = false;
   useEffect(() => {
-    fetch("/api/authors/")
-      .then((response) => response.json())
-      .then((data) => {
-        setAuthors(data);
-        setIsLoading(false);
-      });
+    setAuthors(allAuthors);
   }, []);
   const [query, setQuery] = useState<string>("");
   const filteredAuthors = useMemo(() => {

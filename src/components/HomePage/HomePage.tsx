@@ -4,24 +4,18 @@ import { PageContent } from "components/PageContent";
 import { SongList } from "components/SongList";
 import { MainWrap } from "components/SongPage/SongPage.style";
 import { ISong } from "interfaces";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppSelector } from "utils/hooks";
 import { NewTextWrap } from "./HomePage.style";
+import { newSongs as newSongsMock } from "mocks";
 
 export const HomePage: React.FC = () => {
   const [newSongs, setNewSongs] = useState<ISong[]>([]);
   const userState = useAppSelector((state) => state.user);
-  const GetNewSongs = useCallback(() => {
-    fetch("/api/new-songs/")
-      .then((response) => response.json())
-      .then((data) => {
-        setNewSongs(data);
-      });
-  }, []);
 
   useEffect(() => {
-    GetNewSongs();
-  }, [GetNewSongs]);
+    setNewSongs(newSongsMock);
+  }, [newSongs]);
 
   return (
     <>
