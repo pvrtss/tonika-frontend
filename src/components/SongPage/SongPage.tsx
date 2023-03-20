@@ -118,7 +118,7 @@ export const SongPage: React.FC<SongPageProps> = () => {
         )}
         <SongContentWrap>
           <DescWrap>
-            <img src={cover} alt="song cover"></img>
+            <img src={"/tonika-frontend" + cover} alt="song cover"></img>
             <RightDesc>
               <div>
                 {change ? (
