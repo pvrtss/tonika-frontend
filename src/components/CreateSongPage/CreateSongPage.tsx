@@ -36,11 +36,11 @@ export const CreateSongPage: React.FC<CreateSongPageProps> = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/songs/">Аккорды</Link>
+          <Link to="/tonika-frontend/songs/">Аккорды</Link>
           {" / "}
-          <Link to="/songs/create">Добавить песню</Link>
+          <Link to="/tonika-frontend/songs/create">Добавить песню</Link>
         </NewTextWrap>
         <Form>
           <Input

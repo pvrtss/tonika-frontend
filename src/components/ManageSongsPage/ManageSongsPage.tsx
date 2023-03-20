@@ -144,7 +144,7 @@ export const ManageSongsPage: React.FC<ManageSongsPageProps> = () => {
         <div style={{ marginBottom: "20px" }}>
           {filteredSongs.length ? (
             filteredSongs.map((song, key) => (
-              <Link to={`/songs/${song.pk}`} key={key}>
+              <Link to={`/tonika-frontend/songs/${song.pk}`} key={key}>
                 <SongStrictCard song={song} manage></SongStrictCard>
               </Link>
             ))

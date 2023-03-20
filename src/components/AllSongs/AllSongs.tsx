@@ -21,7 +21,7 @@ export const AllSongs: React.FC<AllSongsProps> = ({ songs }) => {
   return (
     <SongsWrap>
       {songs.map((song, key) => (
-        <Link to={`/songs/${song.pk}`} key={key}>
+        <Link to={`/tonika-frontend/songs/${song.pk}`} key={key}>
           <SongStrictCard
             song={song}
             fromViewset

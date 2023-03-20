@@ -27,11 +27,11 @@ export const CreateAuthorPage: React.FC<CreateAuthorPageProps> = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/authors/">Авторы</Link>
+          <Link to="/tonika-frontend/authors/">Авторы</Link>
           {" / "}
-          <Link to="/authors/create">Создать автора</Link>
+          <Link to="/tonika-frontend/authors/create">Создать автора</Link>
         </NewTextWrap>
         <Form>
           <Input

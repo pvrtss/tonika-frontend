@@ -34,9 +34,9 @@ export const FavouritesPage = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/songs">Избранное</Link>
+          <Link to="/tonika-frontend/songs">Избранное</Link>
         </NewTextWrap>
         <Input
           top="20px"

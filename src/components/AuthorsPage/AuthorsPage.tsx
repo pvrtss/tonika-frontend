@@ -48,9 +48,9 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/authors">Авторы</Link>
+          <Link to="/tonika-frontend/authors">Авторы</Link>
         </NewTextWrap>
         <Input
           top="20px"
@@ -58,7 +58,7 @@ export const AuthorsPage: React.FC<AuthorsPageProps> = ({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         ></Input>
-        <Link to={"/authors/create"}>
+        <Link to={"/tonika-frontend/authors/create"}>
           <CreateButton style={{ maxWidth: "500px" }}>
             Добавить автора
           </CreateButton>
