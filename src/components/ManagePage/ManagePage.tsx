@@ -11,7 +11,7 @@ export const ManagePage = () => {
   const userState = useAppSelector((state) => state.user);
   useEffect(() => {
     if (!userState.user?.is_staff) {
-      navigate("/home");
+      navigate("/tonika-frontend/home");
     }
   }, [userState, navigate]);
 
@@ -20,9 +20,9 @@ export const ManagePage = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная</Link>
+          <Link to="/tonika-frontend/home">Главная</Link>
           {" / "}
-          <Link to="/manage">Управление</Link>
+          <Link to="/tonika-frontend/manage">Управление</Link>
         </NewTextWrap>
         <ManagePanel />
       </PageContent>

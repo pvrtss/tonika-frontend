@@ -15,7 +15,7 @@ export const ManagePanel: React.FC<ManagePanelProps> = () => {
   return (
     <>
       <PanelWrap>
-        <Link to="/manage/songs">
+        <Link to="/tonika-frontend/manage/songs">
           <ChordsButton>
             <PanelButtonText>Аккорды</PanelButtonText>
             <Key></Key>

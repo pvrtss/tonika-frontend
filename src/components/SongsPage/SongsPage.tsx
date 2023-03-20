@@ -34,9 +34,9 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/songs">Все аккорды</Link>
+          <Link to="/tonika-frontend/songs">Все аккорды</Link>
         </NewTextWrap>
         <div>
           <Input
@@ -45,7 +45,7 @@ export const SongsPage: React.FC<SongsPageProps> = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           ></Input>
-          <Link to={"/songs/create"}>
+          <Link to={"/tonika-frontend/songs/create"}>
             <CreateButton style={{ maxWidth: "500px" }}>
               Добавить песню
             </CreateButton>

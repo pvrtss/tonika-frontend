@@ -24,7 +24,7 @@ export const LoginPage = () => {
   const dispatch = useAppDispatch();
   const handleLogin = useCallback(() => {
     dispatch(setUser(userMock));
-    navigate("/home/");
+    navigate("/tonika-frontend/home/");
   }, [dispatch, navigate]);
   const handleKeypress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") handleLogin();
@@ -32,7 +32,7 @@ export const LoginPage = () => {
 
   return (
     <LoginBackground>
-      <Link to="/home">
+      <Link to="/tonika-frontend/home">
         <Logo></Logo>
       </Link>
       <LoginCard>

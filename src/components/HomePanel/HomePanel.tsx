@@ -18,13 +18,13 @@ import { HomePanelProps } from "./HomePanel.types";
 export const HomePanel: React.FC<HomePanelProps> = ({ manager, user }) => {
   return (
     <PanelWrap>
-      <Link to="/songs">
+      <Link to="/tonika-frontend/songs">
         <ChordsButton>
           <PanelButtonText>Аккорды</PanelButtonText>
           <Key></Key>
         </ChordsButton>
       </Link>
-      <Link to="/authors">
+      <Link to="/tonika-frontend/authors">
         <AuthorsButton>
           <PanelButtonText>Авторы</PanelButtonText>
           <Singer></Singer>
@@ -37,7 +37,7 @@ export const HomePanel: React.FC<HomePanelProps> = ({ manager, user }) => {
         </FoldersButton>
       )}
       {manager && user && (
-        <Link to="/manage">
+        <Link to="/tonika-frontend/manage">
           <ManageButton>
             <PanelButtonText>Управление</PanelButtonText>
             <Gear></Gear>

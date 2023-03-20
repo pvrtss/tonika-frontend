@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const userState = useAppSelector((state) => state.user);
   return (
     <HeaderWrap>
-      <Link to="/home">
+      <Link to="/tonika-frontend/home">
         <Logo />
       </Link>
       <Menu as="div">
@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <Link
-                      to="/favourites"
+                      to="/tonika-frontend/favourites"
                       className={classNames(
                         active ? "bg-gray-100" : "",
                         "block px-4 py-2 text-sm text-gray-700 cursor-pointer"

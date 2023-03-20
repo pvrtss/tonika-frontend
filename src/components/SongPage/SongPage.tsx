@@ -87,8 +87,8 @@ export const SongPage: React.FC<SongPageProps> = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная</Link> / <Link to="/songs">Все аккорды</Link>{" "}
-          /{" "}
+          <Link to="/tonika-frontend/home">Главная</Link> /{" "}
+          <Link to="/tonika-frontend/songs">Все аккорды</Link> /{" "}
           <Link to={path}>
             <b>{song.author}</b> - {song.name}
           </Link>

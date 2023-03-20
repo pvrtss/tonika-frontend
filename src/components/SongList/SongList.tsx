@@ -11,7 +11,7 @@ export const SongList: React.FC<SongListProps> = ({ songs }) => {
   return (
     <SongsWrap ref={scrollRef}>
       {songs.map((song, key) => (
-        <Link to={`/songs/${song.pk}`} key={key}>
+        <Link to={`/tonika-frontend/songs/${song.pk}`} key={key}>
           <SongCard song={song} />
         </Link>
       ))}

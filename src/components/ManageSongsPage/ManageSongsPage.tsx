@@ -39,11 +39,11 @@ export const ManageSongsPage: React.FC<ManageSongsPageProps> = () => {
       <Header />
       <PageContent>
         <NewTextWrap>
-          <Link to="/home">Главная </Link>
+          <Link to="/tonika-frontend/home">Главная </Link>
           {" / "}
-          <Link to="/manage">Управление</Link>
+          <Link to="/tonika-frontend/manage">Управление</Link>
           {" / "}
-          <Link to="/manage/songs">Аккорды</Link>
+          <Link to="/tonika-frontend/manage/songs">Аккорды</Link>
         </NewTextWrap>
         <Input
           top="20px"
