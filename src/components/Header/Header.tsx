@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       onClick={() => {
                         fetch("/api/logout/").then(() => {
                           dispatch(logoutUser());
-                          navigate("/login");
+                          navigate("/tonika-frontend/login");
                         });
                       }}
                       className={classNames(
@@ -76,7 +76,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="/login"
+                    href="/tonika-frontend/login"
                     className={classNames(
                       active ? "bg-gray-100" : "",
                       "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
