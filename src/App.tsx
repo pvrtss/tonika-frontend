@@ -4,7 +4,12 @@ import { ISong } from "interfaces";
 import { SongPage } from "components/SongPage";
 import { SongsPage } from "components/SongsPage";
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { useAppDispatch } from "utils/hooks";
 
 import "./App.css";
@@ -33,18 +38,18 @@ function App() {
 
   return (
     <SongsContext.Provider value={[allSongs, isLoading]}>
-      <Router>
+      <Router basename="tonika-frontend/">
         <Routes>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/" element={<div>LANDING</div>} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/songs/" element={<SongsPage />}></Route>
           <Route path="/songs/create" element={<CreateSongPage />}></Route>
-          <Route path="/manage/songs/" element={<ManageSongsPage />}></Route>
-          <Route path="/favourites/" element={<FavouritesPage />}></Route>
-          <Route path="/manage/" element={<ManagePage />}></Route>
+          <Route path="/manage/songs" element={<ManageSongsPage />}></Route>
+          <Route path="/favourites" element={<FavouritesPage />}></Route>
+          <Route path="/manage" element={<ManagePage />}></Route>
           <Route path="/authors/" element={<AuthorsPage />}></Route>
           <Route path="/authors/create" element={<CreateAuthorPage />}></Route>
-          <Route path="/login/" element={<LoginPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/songs/:id" element={<SongPage />}></Route>
         </Routes>
       </Router>
