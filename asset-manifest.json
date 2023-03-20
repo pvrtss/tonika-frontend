@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tonika-frontend/static/css/main.a1035b64.css",
-    "main.js": "/tonika-frontend/static/js/main.52c0b6ee.js",
+    "main.js": "/tonika-frontend/static/js/main.a6ff47d7.js",
     "static/js/787.e51d8df7.chunk.js": "/tonika-frontend/static/js/787.e51d8df7.chunk.js",
     "static/media/tonika-logo-small-a.svg": "/tonika-frontend/static/media/tonika-logo-small-a.946099de2c6e9f186fadfd8505c8419c.svg",
     "static/media/key.svg": "/tonika-frontend/static/media/key.9da36753e2bfd09514851c4c8ef092af.svg",
@@ -18,11 +18,11 @@
     "static/media/close.svg": "/tonika-frontend/static/media/close.aac73cf0d96d956a64823afe21da95f9.svg",
     "static/media/check.svg": "/tonika-frontend/static/media/check.01bc7a3c4dc2be775164c92a3a285821.svg",
     "main.a1035b64.css.map": "/tonika-frontend/static/css/main.a1035b64.css.map",
-    "main.52c0b6ee.js.map": "/tonika-frontend/static/js/main.52c0b6ee.js.map",
+    "main.a6ff47d7.js.map": "/tonika-frontend/static/js/main.a6ff47d7.js.map",
     "787.e51d8df7.chunk.js.map": "/tonika-frontend/static/js/787.e51d8df7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a1035b64.css",
-    "static/js/main.52c0b6ee.js"
+    "static/js/main.a6ff47d7.js"
   ]
 }
