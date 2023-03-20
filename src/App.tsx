@@ -5,7 +5,7 @@ import { SongPage } from "components/SongPage";
 import { SongsPage } from "components/SongsPage";
 import React, { useEffect } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
   Route,
   Routes,

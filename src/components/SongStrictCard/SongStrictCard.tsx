@@ -129,7 +129,7 @@ export const SongStrictCard: React.FC<SongStrictCardProps> = ({
   return (
     <SongStrictCardWrap>
       <LeftChild>
-        <img src={"tonika-frontend/" + song.cover} alt="song cover"></img>
+        <img src={"/tonika-frontend" + song.cover} alt="song cover"></img>
         <div style={{ marginLeft: "20px" }}>
           <div>
             <b>{song.name}</b>
