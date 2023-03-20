@@ -38,7 +38,7 @@ function App() {
 
   return (
     <SongsContext.Provider value={[allSongs, isLoading]}>
-      <Router basename="tonika-frontend/">
+      <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<Navigate to="/home" replace />} />
