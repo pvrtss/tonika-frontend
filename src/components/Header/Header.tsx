@@ -57,10 +57,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   {({ active }) => (
                     <p
                       onClick={() => {
-                        fetch("/api/logout/").then(() => {
-                          dispatch(logoutUser());
-                          navigate("/tonika-frontend/login");
-                        });
+                        navigate("/tonika-frontend/login");
                       }}
                       className={classNames(
                         active ? "bg-gray-100" : "",
