@@ -31,7 +31,7 @@ export const allSongs: ISong[] = [
   {
     pk: 2,
     name: "Люди",
-    chords: "(Аккорды Дайте танк - Люди)sfdfdfsdsfadasd1ijmmnikm",
+    chords: "(Аккорды Дайте танк - Люди)",
     author: "Дайте танк (!)",
     cover: "/people.jpg",
     status: "AC",
