@@ -5,7 +5,7 @@ import { SongPage } from "components/SongPage";
 import { SongsPage } from "components/SongsPage";
 import React, { useEffect } from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -40,17 +40,41 @@ function App() {
     <SongsContext.Provider value={[allSongs, isLoading]}>
       <Router>
         <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/songs/" element={<SongsPage />}></Route>
-          <Route path="/songs/create" element={<CreateSongPage />}></Route>
-          <Route path="/manage/songs" element={<ManageSongsPage />}></Route>
-          <Route path="/favourites" element={<FavouritesPage />}></Route>
-          <Route path="/manage" element={<ManagePage />}></Route>
-          <Route path="/authors/" element={<AuthorsPage />}></Route>
-          <Route path="/authors/create" element={<CreateAuthorPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/songs/:id" element={<SongPage />}></Route>
+          <Route path="/tonika-frontend/home" element={<HomePage />} />
+          <Route
+            path="/tonika-frontend"
+            element={<Navigate to="/tonika-frontend/home" replace />}
+          />
+          <Route path="/tonika-frontend/songs/" element={<SongsPage />}></Route>
+          <Route
+            path="/tonika-frontend/songs/create"
+            element={<CreateSongPage />}
+          ></Route>
+          <Route
+            path="/tonika-frontend/manage/songs"
+            element={<ManageSongsPage />}
+          ></Route>
+          <Route
+            path="/tonika-frontend/favourites"
+            element={<FavouritesPage />}
+          ></Route>
+          <Route
+            path="/tonika-frontend/manage"
+            element={<ManagePage />}
+          ></Route>
+          <Route
+            path="/tonika-frontend/authors/"
+            element={<AuthorsPage />}
+          ></Route>
+          <Route
+            path="/tonika-frontend/authors/create"
+            element={<CreateAuthorPage />}
+          ></Route>
+          <Route path="/tonika-frontend/login" element={<LoginPage />}></Route>
+          <Route
+            path="/tonika-frontend/songs/:id"
+            element={<SongPage />}
+          ></Route>
         </Routes>
       </Router>
     </SongsContext.Provider>
